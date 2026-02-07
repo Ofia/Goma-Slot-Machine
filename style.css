@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    max-width: 100%;
+}
+
+/* Title Text */
+.title-text {
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+.main-title {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(40px, 8vw, 48px);
+    font-weight: bold;
+    color: #2d2d2d;
+    margin: 0;
+    text-shadow: 3px 3px 0 #ff6b35;
+    letter-spacing: 4px;
+}
+
+.sub-title {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(25px, 4vw, 24px);
+    font-weight: normal;
+    color: #666;
+    margin: 5px 0 0 0;
+    letter-spacing: 2px;
+}
+
+.slot-machine {
+    position: relative;
+    width: 90vw;
+    max-width: 500px;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.tv-splash {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    pointer-events: none;
+    transition: opacity 0.5s ease-out;
+}
+
+.tv-splash.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tv-frame {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.reels-container {
+    position: absolute;
+    top: 20%;
+    left: 17%;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+    z-index: 1;
+}
+
+.reel {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    border-right: 2px solid #444;
+}
+
+.reel:last-child {
+    border-right: none;
+}
+
+.reel-strip {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+.reel-item {
+    width: 75%;
+    height: auto;
+    object-fit: contain;
+    margin: 0.5% 0;
+    display: block;
+}
+
+/* Winning row indicator - horizontal lines */
+.winning-row-indicator {
+    position: absolute;
+    top: 20%;
+    left: 17%;
+    width: 50%;
+    height: 50%;
+    z-index: 200;
+    pointer-events: none;
+}
+
+.winning-row-indicator::before {
+    content: '';
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ff6b35;
+}
+
+.winning-row-indicator::after {
+    content: '';
+    position: absolute;
+    top: 70%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #ff6b35;
+}
+
+/* Spinning animation */
+.reel-strip.spinning {
+    animation: spin 0.1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20%);
+    }
+}
+
+/* Play Button - Pixel Art Style */
+.play-button {
+    background-color: #ff6b35;
+    border: 4px solid #2d2d2d;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: bold;
+    padding: 15px 40px;
+    cursor: pointer;
+    position: relative;
+    margin-top: -15px;
+    box-shadow:
+        4px 4px 0 #2d2d2d,
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.1s;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.play-button:hover:not(:disabled) {
+    background-color: #ff8555;
+    transform: translate(1px, 1px);
+    box-shadow:
+        3px 3px 0 #2d2d2d,
+        inset -2px -2px 0 rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.play-button:active:not(:disabled) {
+    background-color: #ff5520;
+    transform: translate(4px, 4px);
+    box-shadow:
+        0px 0px 0 #2d2d2d,
+        inset -2px -2px 0 rgba(0, 0, 0, 0.5),
+        inset 2px 2px 0 rgba(255, 255, 255, 0.1);
+}
+
+.play-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Music Player */
+.music-player {
+    width: 90vw;
+    max-width: 500px;
+    border: 4px solid #2d2d2d;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 4px 4px 0 #2d2d2d;
+    background-color: #fff;
+}
+
+.music-player iframe {
+    display: block;
+    border: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .container {
+        gap: 20px;
+    }
+
+    .slot-machine {
+        width: 95vw;
+    }
+
+    .play-button {
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .reels-container {
+        top: 20%;
+        left: 17%;
+        width: 50%;
+        height: 50%;
+    }
+
+    .winning-row-indicator {
+        top: 20%;
+        left: 17%;
+        width: 50%;
+        height: 50%;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goma Slot Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Title Text -->
+        <div class="title-text">
+            <h1 class="main-title">GOMA BAR</h1>
+            <h2 class="sub-title">Santa Teresa</h2>
+        </div>
+
+        <div class="slot-machine">
+            <!-- Static TV Splash Screen -->
+            <img src="static/images/GomaTV.png" alt="Goma Splash" class="tv-splash" id="tvSplash">
+
+            <!-- TV Frame -->
+            <img src="static/images/GomaSlot.png" alt="Goma TV" class="tv-frame">
+
+            <!-- Slot Reels Container -->
+            <div class="reels-container">
+                <!-- Reel 1 -->
+                <div class="reel" id="reel1">
+                    <div class="reel-strip"></div>
+                </div>
+
+                <!-- Reel 2 -->
+                <div class="reel" id="reel2">
+                    <div class="reel-strip"></div>
+                </div>
+
+                <!-- Reel 3 -->
+                <div class="reel" id="reel3">
+                    <div class="reel-strip"></div>
+                </div>
+            </div>
+
+            <!-- Winning Row Indicator -->
+            <div class="winning-row-indicator"></div>
+        </div>
+
+        <!-- Play Button -->
+        <button class="play-button" id="playButton">
+            <span class="button-text">PLAY</span>
+        </button>
+
+        <!-- Mixcloud Player -->
+        <div class="music-player">
+            <iframe width="100%" height="60" src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&feed=%2Fradioquebrada%2Fradio-quebrada-live-65%2F" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
